@@ -22,7 +22,10 @@ def index():
 @app.route("/reset", methods=["POST"])
 def reset():
     r.set("visits", 0)
-    return jsonify({"message": "Visit counter reset to zero.", "visits": 0})
+    return jsonify({
+        "message": "Visit counter reset to zero.",
+        "visits": 0
+    })
 
 @app.route("/stats")
 def stats():
@@ -38,4 +41,4 @@ def health():
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
